@@ -14,7 +14,7 @@ function RegistrationForm() {
     const [proof_of_income, setPOI] = useState("");
     const [isPending, setIsPending] = useState(false);
 
-    let url = "http://127.0.0.1:8000/api/learners/";
+    let url = "http://16.171.24.43:8000/api/learners/";
     let data = { first_name, last_name, email_address, password, cell_number, physical_address, id_copy, matric_certificate, proof_of_income };
     let options = { method: "POST", body: JSON.stringify(data), headers: { "Content-Type": "application/json" } }
 

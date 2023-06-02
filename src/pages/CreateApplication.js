@@ -11,7 +11,7 @@ function CreateApplication() {
     const [secondChoiceSponsor, setSecondChoiceSponsor] = useState("");
 
 
-    let url = "http://localhost:8000/api/applications";
+    let url = "http://16.171.24.43:8000//api/applications/";
     let data = { applicationType, bootcampType, firstChoiceSponsor, secondChoiceSponsor };
     let options = { method: "POST", body: JSON.stringify(data), headers: { "Content-Type": "application/json" } }
 
