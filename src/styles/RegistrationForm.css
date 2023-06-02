@@ -1,0 +1,37 @@
+.content-area {
+    position: absolute;
+    top: 2%;
+    left: 30%;
+    padding: 30px;
+    border-radius: 20px;
+    height: 95vh;
+    width: 40vw;
+}
+
+.scholrfund-welcome {
+    margin-top: 5px;
+}
+
+#id-input {
+    margin-top: 10px;
+}
+
+#id-label {
+    height: 35px;
+    margin-top: 15px;
+}
+
+#certificate-label {
+    height: 35px;
+    margin-top: 15px;
+}
+
+#income-label {
+    height: 35px;
+    margin-top: 15px;
+}
+
+#application-btn {
+    margin-left: 150px;
+    margin-top: 20px;
+}

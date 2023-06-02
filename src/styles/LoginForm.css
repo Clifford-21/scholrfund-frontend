@@ -1,0 +1,41 @@
+.content-area {
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    padding: 30px;
+    background: rgb(59, 66, 77, 0.4);
+    border-radius: 20px;
+    height: 75vh;
+}
+
+.poppel-welcome {
+    font-family: 'Pacifico';
+    color: white;
+}
+
+#scholr-fund-welcome {
+    margin-left: 100px;
+}
+
+#email-field {
+    margin-top: 50px;
+}
+
+#password-field {
+    margin-top: 50px;
+}
+
+#login-btn {
+    margin-left: 170px;
+    margin-top: 30px;
+}
+
+#register-text {
+    margin-top: 10px;
+    color: white;
+
+}
+
+#login-form {
+    margin-top: 20px;
+}
