@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import RegistrationForm2 from './RegistrationForm2';
+import { Link, Navigate } from "react-router-dom";
 import "../styles/RegistrationForm.css";
 
 const RegistrationForm3 = () => {
@@ -94,7 +94,7 @@ const RegistrationForm3 = () => {
                     <input type="file" id="proof_of_income" onChange={(e) => handleFileChange(e, setproof_of_income)} />
                 </div>
 
-                <button type="submit" id="application-btn" class="btn btn-primary">Send application</button>
+                <Link to="/"><button type="submit" id="application-btn" class="btn btn-primary">Send application</button></Link>
             </form>
         </div>
     );
