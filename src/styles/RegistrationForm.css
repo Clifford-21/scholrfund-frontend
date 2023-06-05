@@ -4,12 +4,16 @@
     left: 30%;
     padding: 30px;
     border-radius: 20px;
-    height: 95vh;
+    height: 125vh;
     width: 40vw;
 }
 
 .scholrfund-welcome {
     margin-top: 5px;
+}
+
+.text-label {
+    color: white;
 }
 
 #id-input {
@@ -21,12 +25,40 @@
     margin-top: 15px;
 }
 
+#id_copy {
+    margin-top: 15px;
+    margin-left: 5px;
+}
+
 #certificate-label {
     height: 35px;
     margin-top: 15px;
 }
 
+#matric_certificate {
+    margin-top: 15px;
+    margin-left: 5px;
+}
+
+#certificate-label {
+    height: 35px;
+    margin-top: 15px;
+    background: white;
+}
+
 #income-label {
+    height: 35px;
+    margin-top: 15px;
+    background: white;
+    border-radius: 2px;
+}
+
+#proof_of_income {
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+#proof-of-income {
     height: 35px;
     margin-top: 15px;
 }
