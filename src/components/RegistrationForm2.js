@@ -1,96 +1,103 @@
 import React, { useState } from 'react';
-import RegistrationForm from './RegistrationForm';
+import { Link, Navigate } from "react-router-dom";
+import "../styles/RegistrationForm.css";
 
-const RegistrationForm2 = () => {
-    const [selectedFiles, setSelectedFiles] = useState([]);
-    const [formData, setFormData] = useState({
-        field1: '',
-        field2: '',
-        field3: '',
-        field4: '',
-    });
+const RegistrationForm3 = () => {
+    const [first_name, setfirst_name] = useState('');
+    const [last_name, setlast_name] = useState('');
+    const [email_address, setEmailAddress] = useState('');
+    const [physical_address, setphysical_address] = useState('');
+    const [password, setpassword] = useState('');
+    const [Cellphone, setCellphone] = useState('');
+    const [id_copy, setid_copy] = useState(null);
+    const [matric_certificate, setmatric_certificate] = useState(null);
+    const [proof_of_income, setproof_of_income] = useState(null);
 
-    const handleFileChange = (event, index) => {
-        const files = event.target.files;
-        const updatedFiles = [...selectedFiles];
-        updatedFiles[index] = files[0];
-        setSelectedFiles(updatedFiles);
+    const handleInputChange = (e, setInput) => {
+        setInput(e.target.value);
     };
 
-    const handleTextChange = (event, field) => {
-        setFormData({ ...formData, [field]: event.target.value });
+    const handleFileChange = (e, setFile) => {
+        setFile(e.target.files[0]);
     };
 
-    const handleUpload = () => {
-        if (selectedFiles.length > 0) {
-            const data = new FormData();
-            selectedFiles.forEach((file, index) => {
-                data.append(`file${index}`, file);
-            });
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-            Object.keys(formData).forEach((key) => {
-                data.append(key, formData[key]);
-            });
+        const formData = new FormData();
+        formData.append('first_name', first_name);
+        formData.append('last_name', last_name);
+        formData.append('email_address', email_address);
+        formData.append('physical_address', physical_address);
+        formData.append('password', password);
+        formData.append('Cellphone', Cellphone);
+        formData.append('id_copy', id_copy);
+        formData.append('matric_certificate', matric_certificate);
+        formData.append('proof_of_income', proof_of_income);
 
-            fetch('http://your-django-api-url/', {
+        try {
+            const response = await fetch('http://16.171.24.43:8000/api/learners/', {
                 method: 'POST',
-                body: data,
-            })
-                .then((response) => response.json())
-                .then((responseData) => {
-                    // Handle response here
-                    console.log(responseData);
-                })
-                .catch((error) => {
-                    // Handle error here
-                    console.error(error);
-                });
+                body: formData,
+            });
+
+            if (response.ok) {
+                console.log('Data sent successfully');
+            } else {
+                console.error('Error sending data');
+            }
+        } catch (error) {
+            console.error('Error sending data', error);
         }
     };
 
     return (
-        <div>
-            <input
-                type="file"
-                onChange={(event) => handleFileChange(event, 0)}
-            />
-            <input
-                type="file"
-                onChange={(event) => handleFileChange(event, 1)}
-            />
-            <input
-                type="file"
-                onChange={(event) => handleFileChange(event, 2)}
-            />
-            <input
-                type="file"
-                onChange={(event) => handleFileChange(event, 3)}
-            />
+        <div className="content-area">
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label htmlFor="first_name" class="text-label">first name</label>
+                    <input class="form-control" type="text" id="first_name" value={first_name} onChange={(e) => handleInputChange(e, setfirst_name)} />
+                </div>
 
-            <input
-                type="text"
-                value={formData.field1}
-                onChange={(event) => handleTextChange(event, 'field1')}
-            />
-            <input
-                type="text"
-                value={formData.field2}
-                onChange={(event) => handleTextChange(event, 'field2')}
-            />
-            <input
-                type="text"
-                value={formData.field3}
-                onChange={(event) => handleTextChange(event, 'field3')}
-            />
-            <input
-                type="text"
-                value={formData.field4}
-                onChange={(event) => handleTextChange(event, 'field4')}
-            />
+                <div>
+                    <label htmlFor="last_name" class="text-label">last name</label>
+                    <input class="form-control" type="text" id="last_name" value={last_name} onChange={(e) => handleInputChange(e, setlast_name)} />
+                </div>
+                <div>
+                    <label htmlFor="email_address" class="text-label">email address</label>
+                    <input class="form-control" type="text" id="email_address" value={email_address} onChange={(e) => handleInputChange(e, setEmailAddress)} />
+                </div>
+                <div>
+                    <label htmlFor="physical_address" class="text-label">physical address</label>
+                    <input class="form-control" type="text" id="physical_address" value={physical_address} onChange={(e) => handleInputChange(e, setphysical_address)} />
+                </div>
+                <div>
+                    <label htmlFor="password" class="text-label">password</label>
+                    <input class="form-control" type="text" id="password" value={password} onChange={(e) => handleInputChange(e, setpassword)} />
+                </div>
+                <div>
+                    <label htmlFor="Cellphone" class="text-label">cell number</label>
+                    <input class="form-control" type="text" id="Cellphone" value={Cellphone} onChange={(e) => handleInputChange(e, setCellphone)} />
+                </div>
 
-            <button onClick={handleUpload}>Upload</button>
+                <div class="input-group mb-3" id="id-input">
+                    <label class="input-group-text" htmlFor="id_copy" id="id-label">ID copy</label>
+                    <input type="file" id="id_copy" onChange={(e) => handleFileChange(e, setid_copy)} />
+                </div>
+
+                <div class="input-group mb-3">
+                    <label htmlFor="matric_certificate" id="certificate-label">matric certificate</label>
+                    <input type="file" id="matric_certificate" onChange={(e) => handleFileChange(e, setmatric_certificate)} />
+                </div>
+                <div class="input-group mb-3">
+                    <label htmlFor="proof_of_income" id="income-label">proof of income</label>
+                    <input type="file" id="proof_of_income" onChange={(e) => handleFileChange(e, setproof_of_income)} />
+                </div>
+
+                <Link to="/"><button type="submit" id="application-btn" class="btn btn-primary">Send application</button></Link>
+            </form>
         </div>
     );
 };
 
-export default RegistrationForm2;
+export default RegistrationForm3;
